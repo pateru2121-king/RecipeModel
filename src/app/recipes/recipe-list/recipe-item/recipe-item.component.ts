@@ -10,7 +10,7 @@ import { RecipeService } from '../../recipe.service';
 })
 export class RecipeItemComponent implements OnInit {
   recipes : Recipe[];
-  //RecipeEl: Recipe;
+  
   
   constructor(private recipeService: RecipeService) { 
     
@@ -20,8 +20,5 @@ export class RecipeItemComponent implements OnInit {
     this.recipes = this.recipeService.getRecipe();
    
   }
-  onSelected(recipe:Recipe){
-    
-    this.recipeService.selectedRecipe.emit(recipe);
-  }
+  
 }

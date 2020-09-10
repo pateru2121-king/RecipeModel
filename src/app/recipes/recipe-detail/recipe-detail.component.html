@@ -1,4 +1,4 @@
-<div *ngIf="recipe">
+
 
     
 
@@ -23,8 +23,8 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <a class="dropdown-item" (click) = 'addToShoppingList()'>To Shopping List</a>
-                  <a class="dropdown-item" href="#">Edit Recipe</a>
-                  <a class="dropdown-item" href="#">Delete Recipe</a>
+                  <a class="dropdown-item" (click) = 'onEditRecipe()'>Edit Recipe</a>
+                  <a class="dropdown-item">Delete Recipe</a>
                 </div>
               </div>
         </div>
@@ -36,18 +36,16 @@
     </div>
     <div class="row mb-3">
         <div class="col-12">
-            <ul>
-                <li *ngFor = "let ingredient of recipe.ingrediants">
+            <ul class="list-group">
+                <li class="list-group-item"   *ngFor = "let ingredient of recipe.ingrediants">
                     {{ ingredient.name }} - {{ingredient.amount}}
                 </li>
             </ul>
         </div>
     </div>
-</div>
 
-<div *ngIf="!recipe">
-    <p>Please Select a Recipe</p>
-</div>
+
+
 
 
 

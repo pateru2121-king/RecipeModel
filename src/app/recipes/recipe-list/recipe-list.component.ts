@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 
@@ -12,12 +13,15 @@ export class RecipeListComponent implements OnInit {
   
   
 
-  constructor() { }
+  constructor(private router : Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     
   }
-
+  addNewRecipe(){
+      this.router.navigate(['new'], {relativeTo : this.route});
+  }
 
   
 }

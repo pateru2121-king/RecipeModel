@@ -38,6 +38,8 @@ export class RecipeService {
     return this.recipes;
    
   }
-
+  getRecipeNew(index:number){
+    return this.recipes[index];
+  }
   constructor() { }
 }
