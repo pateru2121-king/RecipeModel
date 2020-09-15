@@ -7,6 +7,7 @@ import { Ingredient } from '../shared/ingredient.model';
   providedIn: 'root'
 })
 export class RecipeService {
+  recipeswasChanged = new EventEmitter<Recipe>();
   selectedRecipe = new EventEmitter<Recipe>();
   
   private recipes : Recipe[] = [
@@ -40,6 +41,16 @@ export class RecipeService {
   }
   getRecipeNew(index:number){
     return this.recipes[index];
+  }
+  addRecipe(recipe: Recipe){
+      this.recipes.push(recipe);
+      
+  }
+  updateRecipe(index:number, newRecipe){
+    this.recipes[index] = newRecipe;
+  }
+  deleteRecipe(index: number){
+    this.recipes.splice(index,1);
   }
   constructor() { }
 }

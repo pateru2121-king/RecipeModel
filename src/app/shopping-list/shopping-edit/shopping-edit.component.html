@@ -1,27 +1,35 @@
 <div class="row">
     <div class="col-12">
-        
+        <form (ngSubmit)= "onSubmit(f)" #f = "ngForm">
             <div class="row">
                 <div class="col-5 form-group">
                     <label for="Name">Name</label>
-                    <input type="text" id="Name" class="form-control" [(ngModel)] = 'ingName'>
+                    <input type="text" id="Name" class="form-control" name="name"  ngModel required>
 
                 </div>
                 <div class="col-2">
                     <label for="Amount">Amount</label>
-                    <input type="text" id="Amount" class="form-control" [(ngModel)] = 'ingAmount'>
+                    <input type="text" id="Amount" class="form-control" name="amount"  ngModel required 
+                    pattern= "^[1-9]+[0-9]*$">
                 </div>
 
             </div>
 
             <div class="row">
                 <div class="col-12">
-                    <button class="btn btn-success mr-3" type="submit" (click) = "addToIngrediants()">Add</button>
-                    <button class="btn btn-danger mr-3" type="button">Delete</button>
-                    <button class="btn btn-primary" type="button">Clear</button>
+                    <button class="btn btn-success mr-3" type="submit" [disabled]="!f.valid">
+                        {{ shoppingEdit ? 'Upadte' : 'Add' }}
+                    </button>
+                    <button class="btn btn-danger mr-3" type="button"
+                    *ngIf="shoppingEdit"
+                    (click)="onDelete()"
+                    >Delete</button>
+                    <button class="btn btn-primary" type="button" (click)="onClear()">Clear</button>
                 </div>
 
             </div>
+        </form>
+            
 
         
 
