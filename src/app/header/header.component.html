@@ -6,8 +6,11 @@
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item" routerLinkActive= "active">
-          <a class="nav-link" routerLink="/recipes"  >Recipes <span class="sr-only">(current)</span></a>
+        <li class="nav-item" routerLinkActive= "active" *ngIf="isAuthenticated">
+          <a class="nav-link" routerLink="/recipes"   >Recipes <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item" routerLinkActive= "active" *ngIf="!isAuthenticated">
+          <a class="nav-link"  routerLink="/auth" >Authenticate</a>
         </li>
         <li class="nav-item" routerLinkActive= "active">
           <a class="nav-link"  routerLink="/shopping-list" >Shopping List</a>
@@ -16,13 +19,16 @@
         
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <div class="nav-item dropdown">
+        <div class="nav-item" *ngIf="isAuthenticated">
+          <a class="nav-link" (click)="onLogout()" style="cursor: pointer;">Logout</a>
+        </div>
+        <div class="nav-item dropdown" *ngIf="isAuthenticated">
             <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Manage
             </a>
             <div class="dropdown-menu dropdown-custom-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" >Save Data</a>
-              <a class="dropdown-item" >Fetch Data</a>
+              <a class="dropdown-item" (click)="onSaveDta()" >Save Data</a>
+              <a class="dropdown-item" (click)="onFetchData()" >Fetch Data</a>
               
               
             </div>

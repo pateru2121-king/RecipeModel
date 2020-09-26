@@ -4,14 +4,14 @@
 
     <div class="row mb-3">
         <div class="col-12">
-            <img [src]="recipe.imagepath" alt="{{ recipe.name }}" class="img-responsive" style="max-height:300px;">
+            <img [src]="recipe?.imagepath" alt="{{ recipe?.name }}" class="img-responsive" style="max-height:300px;">
         </div>
     </div>
     
     
     <div class="row mb-3">
         <div class="col-12">
-            <h1>{{ recipe.name }}</h1>
+            <h1>{{ recipe?.name }}</h1>
         </div>
     </div>
     
@@ -31,14 +31,14 @@
     </div>
     <div class="row mb-3">
         <div class="col-12">
-            <p>{{ recipe.description }}</p>
+            <p>{{ recipe?.description }}</p>
         </div>
     </div>
     <div class="row mb-3">
         <div class="col-12">
-            <ul class="list-group">
-                <li class="list-group-item"   *ngFor = "let ingredient of recipe.ingrediants">
-                    {{ ingredient.name }} - {{ingredient.amount}}
+            <ul class="list-group" *ngIf="recipe">
+                <li class="list-group-item"   *ngFor = "let ingredient of recipe.ingredients">
+                    {{ ingredient?.name }} - {{ingredient?.amount}}
                 </li>
             </ul>
         </div>
